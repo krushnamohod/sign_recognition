@@ -10,10 +10,11 @@ import numpy as np
 from pynput.keyboard import Controller
 import keyboard
 import webbrowser
-############## Initialization ##############
-
+############## KRUSHNA ##############
 
 cap = cv2.VideoCapture(0)  # Use scrcpy's mirrored screen as input
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1980)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
 mpHands = mp.solutions.hands
 hands = mpHands.Hands(min_detection_confidence=0.70, min_tracking_confidence=0.70)
@@ -29,7 +30,7 @@ volMin, volMax = volume.GetVolumeRange()[:2]
 lms = [4, 8, 12, 16, 20]  # Key landmarks for fingers
 volBar = 400
 
-############################################
+############## Shravani ##############
 
 # Utility functions
 def getDistance(p1, p2):
@@ -77,6 +78,11 @@ def remap(x, in_min, in_max, out_min, out_max, flag=0):
         print(f"Error in remapping: {e}")
         return 0.0
 
+netflix_opened=False
+youtube_opened=False
+
+############## Shriyansh ##############
+
 # Main loop
 while True:
     success, img = cap.read()
@@ -118,23 +124,20 @@ while True:
             volume.SetMasterVolumeLevel(vol, None)
             volBar = remap(vol, volMin, volMax, 400, 150, 1)
         elif gesture == "FIVE":
-            pass
-            # keyboard.press('media_play_pause')  # This simulates a media pause/play toggle
-            # keyboard.release('media_play_pause')
+            pag.scroll(-25)
         elif gesture == "FIST":
-            pass
-            # keyboard.press('media_play_pause')  # This simulates a media pause/play toggle
-            # keyboard.release('media_play_pause')
+            pag.scroll(25)
 
-        elif gesture == "RING":  # Open YouTube when ring finger is raised
-            if not youtube_opened:
-                webbrowser.open("https://www.youtube.com")
-                youtube_opened = True
-
-        elif gesture == "LITTLE":
+        elif gesture == "RING":
             if not netflix_opened:
                 webbrowser.open("https://www.netflix.com")
                 netflix_opened = True
+            
+        elif gesture == "LITTLE":
+            if not youtube_opened:
+                webbrowser.open("https://www.youtube.com")
+                youtube_opened = True
+            
 
     # Volume bar visualization
     cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)
