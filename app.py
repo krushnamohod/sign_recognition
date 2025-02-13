@@ -9,8 +9,9 @@ from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 import numpy as np
 from pynput.keyboard import Controller
 import keyboard
+import webbrowser
 ############## Initialization ##############
-  
+
 
 cap = cv2.VideoCapture(0)  # Use scrcpy's mirrored screen as input
 
@@ -43,6 +44,12 @@ def detectGesture(fingers):
         return "FIVE"  # Pause
     elif fingers == [False, True, True, True, True]:
         return "FIST"  # Play
+    elif fingers == [False, False, True, False, False]:
+        return "MIDDLE"
+    elif fingers == [False, False, False, True, False]:
+        return "RING"
+    elif fingers == [False, False, False, False, True]:
+        return "LITTLE"
     return "NONE"
 
 def keyBinding(res):
@@ -118,6 +125,16 @@ while True:
             pass
             # keyboard.press('media_play_pause')  # This simulates a media pause/play toggle
             # keyboard.release('media_play_pause')
+
+        elif gesture == "RING":  # Open YouTube when ring finger is raised
+            if not youtube_opened:
+                webbrowser.open("https://www.youtube.com")
+                youtube_opened = True
+
+        elif gesture == "LITTLE":
+            if not netflix_opened:
+                webbrowser.open("https://www.netflix.com")
+                netflix_opened = True
 
     # Volume bar visualization
     cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)
