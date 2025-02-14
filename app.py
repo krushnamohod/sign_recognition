@@ -10,7 +10,7 @@ import numpy as np
 from pynput.keyboard import Controller
 import keyboard
 import webbrowser
-############## KRUSHNA ##############
+############## Initialization ##############
 
 cap = cv2.VideoCapture(0)  # Use scrcpy's mirrored screen as input
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1980)
@@ -30,7 +30,7 @@ volMin, volMax = volume.GetVolumeRange()[:2]
 lms = [4, 8, 12, 16, 20]  # Key landmarks for fingers
 volBar = 400
 
-############## Shravani ##############
+############## Utility ##############
 
 # Utility functions
 def getDistance(p1, p2):
@@ -81,7 +81,7 @@ def remap(x, in_min, in_max, out_min, out_max, flag=0):
 netflix_opened=False
 youtube_opened=False
 
-############## Shriyansh ##############
+############## Main ##############
 
 # Main loop
 while True:
