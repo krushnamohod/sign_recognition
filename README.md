@@ -9,6 +9,9 @@ This project is a hand gesture control system that uses a webcam to recognize sp
 - **Scrolling**: Scroll up or down on a webpage using hand movements.
 - **Web Navigation**: Open YouTube and Netflix using designated gestures.
 
+## <span style='color:red'>Note</span>
+This project won't work on linux because pyautogui is specifically made for windows not for linux if you wish then you can change the package and related function on your own
+
 ## Setup
 For this Project you will need python version from 3.10 to 3.12 (preferably python 3.11.9)
 Paste this command to know your machines python version:
@@ -22,7 +25,7 @@ Before installing dependencies, create a virtual environment:
 python -m venv venv
 venv\Scripts\activate
 ```
-#### For Linux or MacOS
+#### For MacOS
 ```bash
 python -m venv venv # for Macos use python3 -m venv venv
 source venv/bin/activate
