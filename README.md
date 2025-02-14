@@ -10,6 +10,12 @@ This project is a hand gesture control system that uses a webcam to recognize sp
 - **Web Navigation**: Open YouTube and Netflix using designated gestures.
 
 ## Setup
+For this Project you will need python version from 3.10 to 3.12 (preferably python 3.11.9)
+Paste this command to know your machines python version:
+```bash
+python --version # if it is more than 3.12 then paste following command in your terminal
+winget install Python.Python --version 3.11.9 --force # only for windows
+```
 Before installing dependencies, create a virtual environment:
 #### For Windows
 ```bash
