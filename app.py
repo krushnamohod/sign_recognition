@@ -132,7 +132,6 @@ while True:
     cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)
     cv2.rectangle(img, (50, int(volBar)), (85, 400), (0, 255, 0), -1)
     
-    # Debug grid lines
     cv2.line(img, (320, 0), (320, 480), (237, 149, 100), 1)
     cv2.line(img, (0, 240), (640, 240), (237, 149, 100), 1)
 
