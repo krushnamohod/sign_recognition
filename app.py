@@ -1,24 +1,25 @@
-import cv2
-import mediapipe as mp
-import pyautogui as pag
-from math import hypot
-from scipy.interpolate import interp1d
-from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
-import numpy as np
-from pynput.keyboard import Controller
-import keyboard
-import webbrowser
+import cv2  # OpenCV for image processing and video capture
+import mediapipe as mp  # Mediapipe for real-time hand tracking
+import pyautogui as pag  # PyAutoGUI for controlling mouse/keyboard actions
+from math import hypot  # For calculating the Euclidean distance between points
+from scipy.interpolate import interp1d  # For remapping values smoothly
+from ctypes import cast, POINTER  # Used for interacting with system audio
+from comtypes import CLSCTX_ALL  # Required for system audio interaction
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume  # For controlling system volume
+import numpy as np  # Used for numerical operations
+from pynput.keyboard import Controller  # For simulating keyboard presses
+import keyboard  # Another library for keyboard interactions
+import webbrowser  # For opening URLs in the browser
+
 ############## Initialization ##############
 
 cap = cv2.VideoCapture(0)  # Use scrcpy's mirrored screen as input
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1980)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
-mpHands = mp.solutions.hands
+mpHands = mp.solutions.hands # Load Mediapipe Hands module
 hands = mpHands.Hands(min_detection_confidence=0.70, min_tracking_confidence=0.70)
-mpDraw = mp.solutions.drawing_utils
+mpDraw = mp.solutions.drawing_utils #draw landmarks on the detected hand.
 
 # Audio volume control setup
 devices = AudioUtilities.GetSpeakers()
@@ -28,7 +29,8 @@ volMin, volMax = volume.GetVolumeRange()[:2]
 
 # Constants and variables
 lms = [4, 8, 12, 16, 20]  # Key landmarks for fingers
-volBar = 400
+volBar = 400  # Initial position of the volume bar
+
 
 ############## Utility ##############
 
@@ -47,10 +49,10 @@ def detectGesture(fingers):
         return "FIST"  # Play
     elif fingers == [False, False, True, False, False]:
         return "MIDDLE"
-    elif fingers == [False, False, False, True, False]:
-        return "RING"
-    elif fingers == [False, False, False, False, True]:
-        return "LITTLE"
+    elif fingers == [False, True, True, False, False]:
+        return "VICTORY"
+    elif fingers == [False, True, False, False, True]:
+        return "SWAG"
     return "NONE"
 
 def keyBinding(res):
@@ -127,13 +129,12 @@ while True:
             pag.scroll(-25)
         elif gesture == "FIST":
             pag.scroll(25)
-
-        elif gesture == "RING":
+        elif gesture == "VICTORY":
             if not netflix_opened:
                 webbrowser.open("https://www.netflix.com")
                 netflix_opened = True
             
-        elif gesture == "LITTLE":
+        elif gesture == "SWAG":
             if not youtube_opened:
                 webbrowser.open("https://www.youtube.com")
                 youtube_opened = True
