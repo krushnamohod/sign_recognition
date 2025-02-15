@@ -55,18 +55,6 @@ def detectGesture(fingers):
         return "SWAG"
     return "NONE"
 
-def keyBinding(res):
-    try:
-        if res == 'FIVE':
-            pag.press('k')
-        elif res == 'FIST':
-            pag.press('l')
-        elif res == 'INDEX':
-            pag.press('right')
-        elif res == 'THUMB':
-            pag.press('left')
-    except Exception as e:
-        print(f"Error in key binding: {e}")
 
 def remap(x, in_min, in_max, out_min, out_max, flag=0):
     if x > in_max:
