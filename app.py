@@ -55,18 +55,6 @@ def detectGesture(fingers):
         return "SWAG"
     return "NONE"
 
-def keyBinding(res):
-    try:
-        if res == 'FIVE':
-            pag.press('k')
-        elif res == 'FIST':
-            pag.press('l')
-        elif res == 'INDEX':
-            pag.press('right')
-        elif res == 'THUMB':
-            pag.press('left')
-    except Exception as e:
-        print(f"Error in key binding: {e}")
 
 def remap(x, in_min, in_max, out_min, out_max, flag=0):
     if x > in_max:
@@ -144,10 +132,6 @@ while True:
     cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)
     cv2.rectangle(img, (50, int(volBar)), (85, 400), (0, 255, 0), -1)
     
-    # Debug grid lines
-    cv2.line(img, (320, 0), (320, 480), (237, 149, 100), 1)
-    cv2.line(img, (0, 240), (640, 240), (237, 149, 100), 1)
-
     cv2.imshow("Hand Gesture Control", img)
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
