@@ -67,3 +67,11 @@ OR
 Press ctrl+c in the terminal  # for windows and linux
 If your are on macos use command c
 
+## Contributors
+[👨‍💻 Sanchit Thakare](https://www.linkedin.com/in/sanchit-thakare-383419229) 
+[👨‍💻 Shriyansh Fasate](https://www.linkedin.com/in/shriyansh-fasate/)
+[👨‍💻 Shravani Shegokar](https://www.linkedin.com/in/shravani-shegokar-b09054291/)
+[👨‍💻 Krushna Mohod](https://www.linkedin.com/in/krushna-mohod-5076a128a/)
+[👨‍💻 Sudhanshu Atalkar](https://www.linkedin.com/in/sudhanshuatalkar/)
+
+Feel free to star 🌟 this repository and provide feedback or suggestions!
